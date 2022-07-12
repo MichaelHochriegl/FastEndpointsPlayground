@@ -9,4 +9,4 @@
 7. Create `Models` class inside the feature folder, this class will hold the request and response models
 8. Create `Validator` class inside the feature folder, this class will hold the validator for the request
 9. Create `IContractMarker` interface inside the `Contract` project, this will be used to get the assembly scanning
-10. 
+10. Inside the `Backend` folder create a new ASP.Net core web api project
