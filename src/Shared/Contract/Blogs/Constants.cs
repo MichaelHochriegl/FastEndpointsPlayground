@@ -1,8 +1,8 @@
 namespace Contract.Blogs;
 
-internal static class Constants
+public static class Constants
 {
-    internal const int BlogTitleMinLength = 3;
-    internal const int BlogTitleMaxLength = 100;
-    internal const int BlogContentMinLength = 10;
+    public const int BlogTitleMinLength = 3;
+    public const int BlogTitleMaxLength = 100;
+    public const int BlogContentMinLength = 10;
 }
