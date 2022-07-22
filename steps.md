@@ -27,7 +27,9 @@
 25. Add ref for `DataAccess` project to `Api` project
 26. Register persistence services with the extension method `AddPersistence`
 27. Pull Docker image for `Postgres`: `docker pull postgres`
-28. Run `Postgres` container: `docker run --name blogster-postgres -e POSTGRES_PASSWORD=mysecretpassword -e POSTGRES_USER=blogster -d postgres`
+28. Run `Postgres` container: `docker run --name blogster-postgres -e POSTGRES_PASSWORD=mysecretpassword -e POSTGRES_USER=blogster -p 5432:5432 -d postgres`
 29. Add ConnectionString to `appsettings.Development.json`: `"DbConnection": "\nServer=127.0.0.1;Port=5432;Database=blogster;User Id=blogster;Password=mysecretpassword;\n"`
 30. Create initial Migration (call this command from the `src/Backend` folder): `dotnet ef migrations add InitialCreate --output-dir Migrations/PostgreSQL --startup-project ./Api/Api.csproj --project ./DataAccess/DataAccess.csproj`
-31. 
+31. Create a new extension method in `PersistenceRegistration` to apply the migrations programmatically on app start (note: this should not be done in production!)
+32. Implement the endpoint and the mapper
+33. 

@@ -25,4 +25,13 @@ public static class PersistenceRegistration
         
         return services;
     }
+
+    public static IServiceProvider ApplyMigrations(this IServiceProvider serviceProvider)
+    {
+        using var scope = serviceProvider.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<BlogDbContext>();
+        db.Database.Migrate();
+
+        return serviceProvider;
+    }
 }
