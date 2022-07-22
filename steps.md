@@ -10,7 +10,7 @@
 8. Create `Validator` class inside the feature folder, this class will hold the validator for the request
 9. Create `IContractMarker` interface inside the `Contract` project, this will be used to get the assembly scanning
 10. Inside the `Backend` folder create a new ASP.Net core web app project called `Api` (choose with Docker support)
-11. Install the nuget packages `FastEndpoints`, `FastEndpoints.Swagger`, `FastEndpoints.Security` inside the `Api` project
+11. Install the nuget packages `FastEndpoints`, `FastEndpoints.Swagger`, `FastEndpoints.Security`, `Microsoft.EntityFrameworkCore.Design` inside the `Api` project
 12. Create a `Features/Blogs/Create` folder structure inside the `Api` project, this will hold the actual endpoint and the mapper
 13. Add a reference to the `Contract` project
 14. Inside the `Backend` folder create a new class lib project called `Domain`
@@ -26,4 +26,8 @@
 24. Create a static class `PersistenceRegistration` with a static extension method `AddPersistence`
 25. Add ref for `DataAccess` project to `Api` project
 26. Register persistence services with the extension method `AddPersistence`
-27. 
+27. Pull Docker image for `Postgres`: `docker pull postgres`
+28. Run `Postgres` container: `docker run --name blogster-postgres -e POSTGRES_PASSWORD=mysecretpassword -e POSTGRES_USER=blogster -d postgres`
+29. Add ConnectionString to `appsettings.Development.json`: `"DbConnection": "\nServer=127.0.0.1;Port=5432;Database=blogster;User Id=blogster;Password=mysecretpassword;\n"`
+30. Create initial Migration (call this command from the `src/Backend` folder): `dotnet ef migrations add InitialCreate --output-dir Migrations/PostgreSQL --startup-project ./Api/Api.csproj --project ./DataAccess/DataAccess.csproj`
+31. 
